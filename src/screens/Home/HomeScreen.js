@@ -1,12 +1,16 @@
 import React from "react";
 import { ImageBackground, ScrollView, StyleSheet } from "react-native";
-import { View, Text } from "react-native-ui-lib";
+import { View, Text, Button } from "react-native-ui-lib";
 import EventCard from "../../components/cards/eventCard";
 import DateCard from "../../components/dates/dateCard";
 import Input from "../../components/inputs/input";
+import CreateEventButton from "../../components/buttons/createEventButton";
 import { eventData } from "../../extra/extraData";
+import { useNavigation } from "@react-navigation/native";
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
+
   return (
     <ScrollView
       nestedScrollEnabled
@@ -14,6 +18,10 @@ const HomeScreen = () => {
       showsVerticalScrollIndicator={false}
     >
       <View useSafeArea>
+        <CreateEventButton
+          containerStyle={styles.createEventButton}
+          action={() => navigation.navigate("Create Event")}
+        />
         <View paddingL-20>
           <Text h4 marginV-15 white style={styles.textHeader}>
             Explore events
@@ -83,6 +91,12 @@ const styles = StyleSheet.create({
   },
   bannerImageCard: {
     paddingHorizontal: 20,
+  },
+  createEventButton: {
+    position: "absolute",
+    top: 50,
+    right: 0,
+    zIndex: 1,
   },
 });
 
