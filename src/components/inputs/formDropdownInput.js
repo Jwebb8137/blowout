@@ -1,7 +1,7 @@
 import React from "react";
 import { ImageBackground, StyleSheet, TouchableOpacity } from "react-native";
 import { Text, View, Picker, Colors } from "react-native-ui-lib";
-import { FontAwesome } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 const FormDropdownInput = ({ label, placeholder, options }) => {
   return (
@@ -15,13 +15,17 @@ const FormDropdownInput = ({ label, placeholder, options }) => {
         style={styles.input}
         migrateTextField
         trailingAccessory={
-          <FontAwesome name="chevron-down" size={24} color={Colors.lightGray} />
+          <Ionicons name="chevron-down" size={24} color={Colors.lightGray} />
         }
         containerStyle={styles.inputContainer}
         useWheelPicker
       >
         {options.map((option) => (
-          <Picker.Item label={option.name} value={option.value} />
+          <Picker.Item
+            key={option.value}
+            label={option.name}
+            value={option.value}
+          />
         ))}
       </Picker>
     </View>
