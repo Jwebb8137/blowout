@@ -4,8 +4,8 @@ import { View, Text } from "react-native-ui-lib";
 
 const FormTextInput = ({ label, placeholder, secureTextEntry, number }) => {
   return (
-    <View>
-      <Text lightGray p style={styles.label}>
+    <View marginV-10>
+      <Text white p style={styles.label}>
         {label}
       </Text>
       <View style={styles.inputContainer}>

@@ -1,11 +1,17 @@
 import React from "react";
 import { StyleSheet, TextInput } from "react-native";
 import { View, Text, DateTimePicker } from "react-native-ui-lib";
+import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
+
+const calendarIcon = (
+  <FontAwesome name="calendar-o" size={24} color="#BCBCBC" />
+);
+const timeIcon = <FontAwesome5 name="clock" size={24} color="#BCBCBC" />;
 
 const DateTimeInput = ({ label, time }) => {
   return (
-    <View>
-      <Text lightGray p style={styles.label}>
+    <View marginV-10>
+      <Text white p style={styles.label}>
         {label}
       </Text>
       <DateTimePicker
@@ -25,6 +31,7 @@ const DateTimeInput = ({ label, time }) => {
               placeholderTextColor="#858585"
               style={styles.input}
             />
+            {time ? timeIcon : calendarIcon}
           </View>
         )}
       />
@@ -41,6 +48,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: 48,
     paddingBottom: 0,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   input: {
     color: "#FFF",

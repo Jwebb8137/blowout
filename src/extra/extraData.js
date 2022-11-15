@@ -209,3 +209,8 @@ export const eventData = [
     ],
   },
 ];
+
+export const imagesData = [
+  "https://media.istockphoto.com/photos/crowd-applauding-on-a-concert-picture-id837765936?b=1&k=20&m=837765936&s=170667a&w=0&h=YnX19K-S4b6wPUqbMJe2h9QU_IdLJlcPFM7cV7U9KUc=",
+  "https://media.istockphoto.com/photos/silhouette-of-raised-hands-and-arms-at-concert-festival-party-picture-id1160643993?b=1&k=20&m=1160643993&s=170667a&w=0&h=bsWGNUgAI_wAY6QJHyy-on24dNu-fS0CVKTLeRo6Cgg=",
+];
