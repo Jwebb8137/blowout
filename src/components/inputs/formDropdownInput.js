@@ -5,7 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 const FormDropdownInput = ({ label, placeholder, options }) => {
   return (
-    <View marginV-10>
+    <View marginV-5>
       <Text white p style={styles.label}>
         {label}
       </Text>

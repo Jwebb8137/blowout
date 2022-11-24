@@ -10,7 +10,7 @@ const timeIcon = <FontAwesome5 name="clock" size={24} color="#BCBCBC" />;
 
 const DateTimeInput = ({ label, time }) => {
   return (
-    <View marginV-10>
+    <View marginV-5>
       <Text white p style={styles.label}>
         {label}
       </Text>

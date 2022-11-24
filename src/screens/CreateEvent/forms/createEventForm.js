@@ -20,6 +20,10 @@ const CreateEventForm = () => {
       </View>
       <View bg-black flex>
         <FormTextInput label="Event Name" placeholder="Enter event name" />
+        <TagsInput
+          tags={["NF", "Tech N9ne", "Eminem", "Snoop Dogg"]}
+          label="Performers"
+        />
         <FormTextInput
           label="Description"
           placeholder="Enter event description"
@@ -28,10 +32,6 @@ const CreateEventForm = () => {
           label="Event Type"
           placeholder="Select event type"
           options={eventTypeData}
-        />
-        <TagsInput
-          tags={["Party", "Costume", "College", "Live Music"]}
-          label="Tags"
         />
         <FormDropdownInput
           label="Location"
@@ -46,8 +46,8 @@ const CreateEventForm = () => {
         />
         <FormTextInput label="Admission Price" placeholder="$0.00" number />
         <TagsInput
-          tags={["NF", "Tech N9ne", "Eminem", "Snoop Dogg"]}
-          label="Performers"
+          tags={["Party", "Costume", "College", "Live Music"]}
+          label="Tags"
         />
       </View>
     </ScrollView>

@@ -4,7 +4,7 @@ import { Text, View } from "react-native-ui-lib";
 
 const TagsInput = ({ tags, label }) => {
   return (
-    <View marginV-10 paddingR-10>
+    <View marginB-5 marginT-12 paddingR-10>
       <View row spread>
         <Text white p style={styles.label}>
           {label}
