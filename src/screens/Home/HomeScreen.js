@@ -1,12 +1,18 @@
-import React from "react";
-import { ImageBackground, ScrollView, StyleSheet } from "react-native";
-import { View, Text, Button } from "react-native-ui-lib";
-import EventCard from "../../components/cards/eventCard";
-import DateCard from "../../components/dates/dateCard";
-import Input from "../../components/inputs/input";
-import CreateEventButton from "../../components/buttons/createEventButton";
-import { eventData } from "../../extra/extraData";
-import { useNavigation } from "@react-navigation/native";
+import React from 'react';
+import {
+  ImageBackground,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
+import { View, Text, Button } from 'react-native-ui-lib';
+import EventCard from '../../components/cards/eventCard';
+import DateCard from '../../components/dates/dateCard';
+import Input from '../../components/inputs/input';
+import CreateEventButton from '../../components/buttons/createEventButton';
+import { eventData } from '../../extra/extraData';
+import { useNavigation } from '@react-navigation/native';
+import { schedulePushNotification } from '../../utils/notifications/notifications';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -20,16 +26,22 @@ const HomeScreen = () => {
       <View useSafeArea>
         <CreateEventButton
           containerStyle={styles.createEventButton}
-          action={() => navigation.navigate("Create Event")}
+          action={() => navigation.navigate('Create Event')}
         />
         <View paddingL-20>
           <Text h4 marginV-15 white style={styles.textHeader}>
             Explore events
           </Text>
-          <Input label="Search" placeholder={"Search for events..."} />
+          <Input label="Search" placeholder={'Search for events...'} />
           <Text h4 marginV-15 white style={styles.textSubHeader}>
             Featured
           </Text>
+          <TouchableOpacity
+            onPress={() => schedulePushNotification()}
+            style={{ padding: 10, backgroundColor: 'red' }}
+          >
+            <Text white>Schedule Push Notification</Text>
+          </TouchableOpacity>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {eventData.map((event) => (
               <View marginR-20 key={event.id}>
@@ -48,7 +60,7 @@ const HomeScreen = () => {
             ))}
           </ScrollView>
           <ImageBackground
-            source={require("../../assets/media/images/purpleGradient.png")}
+            source={require('../../assets/media/images/purpleGradient.png')}
             style={styles.bannerImageCard}
             imageStyle={styles.bannerImage}
           >
@@ -75,7 +87,7 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
-    backgroundColor: "#000",
+    backgroundColor: '#000',
   },
   textHeader: {
     fontSize: 26,
@@ -84,7 +96,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   eventList: {
-    backgroundColor: "red",
+    backgroundColor: 'red',
   },
   bannerImage: {
     borderRadius: 18,
@@ -93,7 +105,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   createEventButton: {
-    position: "absolute",
+    position: 'absolute',
     top: 50,
     right: 0,
     zIndex: 1,
