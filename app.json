@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "newapp",
-    "slug": "newapp",
+    "name": "BlowOut",
+    "slug": "BlowOut",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -9,16 +9,22 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.blowout.blowout",
+      "buildNumber": "1.0.0"
     },
     "android": {
+      "package": "com.blowout.blowout",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -35,6 +41,11 @@
           "color": "#ffffff"
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "2d9a057d-9edc-40e8-a7a9-f5bfc96065a7"
+      }
+    }
   }
 }
