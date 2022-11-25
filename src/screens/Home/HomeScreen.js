@@ -36,12 +36,6 @@ const HomeScreen = () => {
           <Text h4 marginV-15 white style={styles.textSubHeader}>
             Featured
           </Text>
-          <TouchableOpacity
-            onPress={() => schedulePushNotification()}
-            style={{ padding: 10, backgroundColor: 'red' }}
-          >
-            <Text white>Schedule Push Notification</Text>
-          </TouchableOpacity>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {eventData.map((event) => (
               <View marginR-20 key={event.id}>

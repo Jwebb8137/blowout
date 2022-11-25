@@ -11,7 +11,6 @@
       "distribution": "internal",
       "ios": {
         "simulator": true,
-        "buildConfiguration": "Debug",
         "image": "latest"
       }
     },
