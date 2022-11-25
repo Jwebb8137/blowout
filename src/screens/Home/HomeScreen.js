@@ -20,9 +20,15 @@ const HomeScreen = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
+    setIsLoading(true);
+    try {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 2000);
+    } catch (error) {
+      alert('Error loading data');
+    }
+    setIsLoading(false);
   }, []);
 
   if (isLoading) {
