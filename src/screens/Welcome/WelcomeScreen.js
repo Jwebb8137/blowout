@@ -3,13 +3,9 @@ import React, { useContext } from 'react';
 import { Dimensions, ImageBackground, StyleSheet } from 'react-native';
 import { View, Text } from 'react-native-ui-lib';
 import Button from '../../components/buttons/button';
-import { AuthContext } from '../../store/context/authContext';
 
 const WelcomeScreen = () => {
   const navigation = useNavigation();
-  const authContext = useContext(AuthContext);
-
-  console.log(authContext);
 
   return (
     <View paddingT-35 style={styles.rootContainer}>
@@ -28,7 +24,11 @@ const WelcomeScreen = () => {
       <View marginB-40 paddingH-30>
         <Button label="Sign In" action={() => navigation.navigate('Sign In')} />
         <View marginV-10 />
-        <Button label="Sign Up" outline />
+        <Button
+          label="Sign Up"
+          outline
+          action={() => navigation.navigate('Sign Up')}
+        />
       </View>
     </View>
   );

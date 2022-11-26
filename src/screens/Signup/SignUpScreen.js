@@ -12,18 +12,18 @@ import { View, Text } from 'react-native-ui-lib';
 import Button from '../../components/buttons/button';
 import Input from '../../components/inputs/input';
 
-const SignInScreen = () => {
+const SignUpScreen = () => {
   const navigation = useNavigation();
-  const { state, signin } = useContext(AuthContext);
+  const { state, signup } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(false);
   const [credentials, setCredentials] = useState({
     email: '',
     password: '',
   });
 
-  const handleSignIn = async () => {
+  const handleSignUp = async () => {
     setIsLoading(true);
-    const response = await signin(credentials);
+    const response = await signup(credentials);
     if (response) {
       navigation.navigate('Tabs');
     }
@@ -38,36 +38,38 @@ const SignInScreen = () => {
       />
       <View centerH paddingT-23 paddingH-20 style={styles.signInContainer}>
         <Text h3 white>
-          Welcome Back!
+          Get Started Now!
         </Text>
-        <Text p marginB-15 bold white style={styles.subTitle}>
-          Sign into your account below
+        <Text p marginB-15 bold lightGray style={styles.subTitle}>
+          Enter your details below
         </Text>
         <Input
           label="Email"
-          placeholder="Username"
+          placeholder="Email Address"
           onChange={(value) => setCredentials({ ...credentials, email: value })}
         />
         <View marginV-6 />
         <Input
           label="Password"
-          placeholder="Password"
+          placeholder="New Password"
           secureTextEntry
           onChange={(value) =>
             setCredentials({ ...credentials, password: value })
           }
         />
-        <Text marginT-5 marginB-20 p bold white style={styles.forgotPassword}>
-          Forgot Password?
-        </Text>
-        <Button label="Log In" action={handleSignIn} loading={isLoading} />
+        <View marginV-12 />
+        <Button
+          label="Create Account"
+          action={handleSignUp}
+          loading={isLoading}
+        />
         <View row center marginT-10>
           <Text p bold marginR-5 lightGray style={styles.noAccount}>
-            Don't have an account?
+            Already have an account?
           </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Sign Up')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Sign In')}>
             <Text p bold white style={styles.signUpText}>
-              Sign Up
+              Sign In
             </Text>
           </TouchableOpacity>
         </View>
@@ -130,4 +132,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignInScreen;
+export default SignUpScreen;

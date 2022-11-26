@@ -1,5 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+import BackButton from '../components/buttons/backButton';
 
 // screens
 import WelcomeScreen from '../screens/Welcome/WelcomeScreen';
@@ -10,8 +11,10 @@ import CreateEvent from '../screens/CreateEvent/createEvent';
 
 // tab navigators
 import TabNavigator from './BottomTabNavigator';
-import BackButton from '../components/buttons/backButton';
-import AuthContextProvider from '../store/context/authContext';
+
+import { Provider as AuthProvider } from '../store/context/AuthContext';
+import FlashMessage from 'react-native-flash-message';
+import SignUpScreen from '../screens/Signup/SignUpScreen';
 
 const Stack = createStackNavigator();
 
@@ -34,7 +37,7 @@ const MainStack = () => {
   };
 
   return (
-    <AuthContextProvider>
+    <AuthProvider>
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="Welcome"
@@ -46,6 +49,7 @@ const MainStack = () => {
           <Stack.Screen name="Tabs" component={TabNavigator} />
           <Stack.Screen name="Welcome" component={WelcomeScreen} />
           <Stack.Screen name="Sign In" component={SignInScreen} />
+          <Stack.Screen name="Sign Up" component={SignUpScreen} />
           <Stack.Screen
             name="Create Event"
             component={CreateEvent}
@@ -55,7 +59,8 @@ const MainStack = () => {
           <Stack.Screen name="Ticket" component={TicketScreen} />
         </Stack.Navigator>
       </NavigationContainer>
-    </AuthContextProvider>
+      <FlashMessage position="top" />
+    </AuthProvider>
   );
 };
 
