@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { StatusBar } from 'react-native';
+import React, { useEffect, useContext } from 'react';
+import { LogBox, StatusBar } from 'react-native';
 import MainStack from './src/navigation/MainStack';
 import { useFonts } from 'expo-font';
 import 'react-native-gesture-handler';
@@ -10,6 +10,10 @@ import { Provider as AuthProvider } from './src/store/context/AuthContext';
 require('react-native-ui-lib/config').setConfig({ appScheme: 'default' });
 
 StatusBar.setBarStyle('light-content');
+
+LogBox.ignoreLogs([
+  'Sending `onAnimatedValueUpdate` with no listeners registered.',
+]);
 
 const App = () => {
   useEffect(() => {

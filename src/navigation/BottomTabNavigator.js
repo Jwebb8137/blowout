@@ -1,24 +1,25 @@
-import React from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import HomeScreen from "../screens/Home/HomeScreen";
-import { Ionicons, FontAwesome } from "@expo/vector-icons";
-import { Text } from "react-native-ui-lib";
+import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import HomeScreen from '../screens/Home/HomeScreen';
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import { Text } from 'react-native-ui-lib';
+import AccountScreen from '../screens/Account/AccountScreen';
 
 const Tab = createBottomTabNavigator();
 
 const navigatorScreenOptions = {
   headerShown: false,
   tabBarStyle: {
-    backgroundColor: "#000",
-    borderTopColor: "transparent",
+    backgroundColor: '#000',
+    borderTopColor: 'transparent',
     height: 85,
     paddingTop: 5,
   },
-  tabBarActiveTintColor: "#FFF",
+  tabBarActiveTintColor: '#FFF',
   tabBarLabelStyle: {
     fontSize: 14,
     top: 4,
-    fontFamily: "Roboto-Regular",
+    fontFamily: 'Roboto-Regular',
   },
   headerShadowVisible: false,
 };
@@ -44,7 +45,7 @@ const TabNavigator = () => {
                 Featured
               </Text>
             ) : (
-              ""
+              ''
             );
           },
         }}
@@ -67,7 +68,7 @@ const TabNavigator = () => {
                 Calendar
               </Text>
             ) : (
-              ""
+              ''
             );
           },
         }}
@@ -90,14 +91,14 @@ const TabNavigator = () => {
                 Tickets
               </Text>
             ) : (
-              ""
+              ''
             );
           },
         }}
       />
       <Tab.Screen
         name="Account"
-        component={HomeScreen}
+        component={AccountScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesome name="user" color={color} size={32} />
@@ -113,7 +114,7 @@ const TabNavigator = () => {
                 Account
               </Text>
             ) : (
-              ""
+              ''
             );
           },
         }}

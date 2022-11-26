@@ -1,5 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import BackButton from '../components/buttons/backButton';
 import { Context as AuthContext } from '../store/context/AuthContext';
@@ -15,6 +15,7 @@ import SignUpScreen from '../screens/Signup/SignUpScreen';
 
 // tab navigators
 import TabNavigator from './BottomTabNavigator';
+import LoadingScreen from '../screens/Welcome/LoadingScreen';
 
 const Stack = createStackNavigator();
 
@@ -41,7 +42,7 @@ const MainStack = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Welcome"
+        initialRouteName="Loading"
         screenOptions={{
           headerShown: false,
           backgroundColor: '#000',
@@ -60,6 +61,7 @@ const MainStack = () => {
           </Stack.Group>
         ) : (
           <Stack.Group>
+            <Stack.Screen name="Loading" component={LoadingScreen} />
             <Stack.Screen name="Welcome" component={WelcomeScreen} />
             <Stack.Screen name="Sign In" component={SignInScreen} />
             <Stack.Screen name="Sign Up" component={SignUpScreen} />

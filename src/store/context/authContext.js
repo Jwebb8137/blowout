@@ -20,6 +20,17 @@ const authReducer = (state, action) => {
   }
 };
 
+const tryLocalSignin = (dispatch) => {
+  return async () => {
+    const token = await AsyncStorage.getItem('token');
+    if (token) {
+      dispatch({ type: 'signin', payload: token });
+      return token;
+    }
+    return null;
+  };
+};
+
 const signup = (dispatch) => {
   return async ({ email, password }) => {
     try {
@@ -46,7 +57,6 @@ const signup = (dispatch) => {
 const signin = (dispatch) => {
   return async ({ email, password }) => {
     try {
-      console.log('running sign in', email, password);
       const response = await serverApi.post('/signin', { email, password });
       await AsyncStorage.setItem('token', response.data.token);
       dispatch({ type: 'signin', payload: response.data.token });
@@ -69,7 +79,10 @@ const signin = (dispatch) => {
 };
 
 const signout = (dispatch) => {
-  return () => {};
+  return async () => {
+    await AsyncStorage.removeItem('token');
+    dispatch({ type: 'signout' });
+  };
 };
 
 export const { Context, Provider } = createDataContext(
@@ -78,6 +91,7 @@ export const { Context, Provider } = createDataContext(
     signup,
     signin,
     signout,
+    tryLocalSignin,
   },
   { token: null, errorMessage: '' }
 );
