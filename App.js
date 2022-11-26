@@ -5,6 +5,7 @@ import { useFonts } from 'expo-font';
 import 'react-native-gesture-handler';
 import './src/styles/colors/colorStyles';
 import { initializePushNotifications } from './src/utils/notifications/notifications';
+import { Provider as AuthProvider } from './src/store/context/AuthContext';
 
 require('react-native-ui-lib/config').setConfig({ appScheme: 'default' });
 
@@ -25,7 +26,11 @@ const App = () => {
     return null;
   }
 
-  return <MainStack />;
+  return (
+    <AuthProvider>
+      <MainStack />
+    </AuthProvider>
+  );
 };
 
 export default App;

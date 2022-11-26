@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import createDataContext from './createDataContext';
 import serverApi from '../../api';
 import { showMessage } from 'react-native-flash-message';
@@ -7,6 +8,8 @@ const authReducer = (state, action) => {
     case 'add_error':
       return { ...state, errorMessage: action.payload };
     case 'signin':
+      return { errorMessage: '', token: action.payload };
+    case 'signup':
       return { errorMessage: '', token: action.payload };
     case 'clear_error_message':
       return { ...state, errorMessage: '' };
@@ -21,6 +24,8 @@ const signup = (dispatch) => {
   return async ({ email, password }) => {
     try {
       const response = await serverApi.post('/signup', { email, password });
+      await AsyncStorage.setItem('token', response.data.token);
+      dispatch({ type: 'signup', payload: response.data.token });
       return response.data;
     } catch (error) {
       const errorMessage = error.response.data.error;
@@ -43,6 +48,8 @@ const signin = (dispatch) => {
     try {
       console.log('running sign in', email, password);
       const response = await serverApi.post('/signin', { email, password });
+      await AsyncStorage.setItem('token', response.data.token);
+      dispatch({ type: 'signin', payload: response.data.token });
       return response.data;
     } catch (error) {
       const errorMessage = error.response.data.error;
@@ -62,9 +69,7 @@ const signin = (dispatch) => {
 };
 
 const signout = (dispatch) => {
-  return () => {
-    // somehow sign out!
-  };
+  return () => {};
 };
 
 export const { Context, Provider } = createDataContext(
